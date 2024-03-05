@@ -1,7 +1,7 @@
 import React from "react";
 import useFSM from "../../hooks/fsm/use-fsm";
 
-const StateComponent: React.FC = () => {
+const SimpleCounter: React.FC = () => {
     const [state, transition] = useFSM({
         states: {
             counting: {},
@@ -27,7 +27,6 @@ const StateComponent: React.FC = () => {
         context: { count: 0 },
         initialState: "counting",
     });
-    console.log("state-comp", state);
     return (
         <div>
             {state.context.count}
@@ -37,4 +36,4 @@ const StateComponent: React.FC = () => {
     );
 };
 
-export default StateComponent;
+export default SimpleCounter;

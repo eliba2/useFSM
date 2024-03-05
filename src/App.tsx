@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import StateComponent from "./components/state-component";
+import StateComponent from "./components/simple-counter";
 
 function App() {
     /*

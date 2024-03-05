@@ -1,11 +1,11 @@
 export type FSM_STATE<C> = {
-    onEnter?: (context?: C) => C | void;
-    onExit?: (context?: C) => C | void;
+    onEnter?: (context: C) => object | void;
+    onExit?: (context: C) => object | void;
 };
 
 export type FSM_TRANSITION<T extends StateMap<C>, C> = {
     target: keyof T;
-    action?: (context?: C) => C | void;
+    action?: (context?: C) => object | void;
 };
 
 export type FSM_TRANSITIONS<

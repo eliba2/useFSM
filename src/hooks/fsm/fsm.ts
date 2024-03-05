@@ -17,17 +17,13 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         const stateTransitions = this.transitions[eventName];
 
         if (!stateTransitions) {
-            console.log(`No transitions defined for event '${eventName}'`);
-            return;
+            throw new Error(`No transitions defined for event '${eventName}'`);
         }
 
         const transition = stateTransitions[this.currentState];
 
         if (!transition) {
-            console.log(
-                `No valid transition found for event '${eventName}' from state '${String(this.currentState)}'`
-            );
-            return;
+            throw new Error(`No valid transition found for event '${eventName}' from state '${String(this.currentState)}'`);
         }
 
         // Execute onExit action for current state
@@ -35,7 +31,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         if (onExit) {
             const returnValue = onExit(this.context);
             if (returnValue) {
-                this.context = returnValue;
+                this.context = returnValue as C;
             }
         }
 
@@ -43,7 +39,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         if (transition.action) {
             const returnValue = transition.action(this.context);
             if (returnValue) {
-                this.context = returnValue;
+                this.context = returnValue as C;
             }
         }
 
@@ -55,7 +51,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         if (onEnter) {
             const returnValue = onEnter(this.context);
             if (returnValue) {
-                this.context = returnValue;
+                this.context = returnValue as C;
             }
         }
 
