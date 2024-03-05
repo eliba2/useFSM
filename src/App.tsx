@@ -1,43 +1,63 @@
+import { Menu } from "primereact/menu";
+import { MenuItem } from "primereact/menuitem";
+import { Panel } from "primereact/panel";
 import React from "react";
 import "./App.css";
-import StateComponent from "./components/simple-counter";
+import SimpleCounter from "./components/simple-counter";
+import TrafficLight from "./components/trafficlight";
 
 function App() {
-    /*
-// Usage
-const fsm = new FSM({
-    states: {
-        off: {
-            onEnter: () => console.log("entered off"),
+    const [activeComponent, setActiveComponent] =
+        React.useState<string>("SimpleCounter");
+
+    const menuItems: MenuItem[] = [
+        {
+            label: "Examples",
+            items: [
+                {
+                    id: "SimpleCounter",
+                    label: "SimpleCounter",
+                    command: () => setActiveComponent("SimpleCounter"),
+                },
+                {
+                    id: "TrafficLight",
+                    label: "TrafficLight",
+                    command: () => setActiveComponent("TrafficLight"),
+                },
+                {
+                    id: "FetchData",
+                    label: "FetchData",
+                    command: () => setActiveComponent("SimpleCounter"),
+                },
+            ],
         },
-        on: {
-            onEnter: () => console.log("entered on"),
-        },
-    },
-    events: {
-        switch: {
-            off: {
-                target: "on",
-                action: () => console.log("Switching off to on"),
-            },
-            on: {
-                target: "off",
-                action: () => console.log("Switching on to off"),
-            },
-        },
-    },
-    initialContext: { name: "John" },
-    initialState: "on",
-});
-console.log("Starting state:", fsm.getState());
-//console.log(fsm);
-fsm.transition("switch");
-*/
-    //console.log(fsm);
+    ];
+
+    const renderComponent = (): JSX.Element => {
+        switch (activeComponent) {
+            case "SimpleCounter":
+                return <SimpleCounter />;
+            case "TrafficLight":
+                return <TrafficLight />;
+            case "FetchData":
+                return <SimpleCounter />;
+            default:
+                return <div></div>;
+        }
+    };
+
     return (
         <div className="App">
-            Hi there
-            <StateComponent />
+            <Panel header="Header" className="topPanel">
+                <div className="flex">
+                    <div className="w-1/4">
+                        <Menu model={menuItems} />
+                    </div>
+                    <div className="w-3/4">
+                        <> {renderComponent()}</>
+                    </div>
+                </div>
+            </Panel>
         </div>
     );
 }

@@ -1,15 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { PrimeReactProvider } from "primereact/api";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import 'primereact/resources/primereact.min.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <App />
+        <PrimeReactProvider>
+            <App />
+        </PrimeReactProvider>
     </React.StrictMode>
 );
 

@@ -1,5 +1,7 @@
 import React from "react";
+import { Button } from "primereact/button";
 import useFSM from "../../hooks/fsm/use-fsm";
+import "./styles.css";
 
 const SimpleCounter: React.FC = () => {
     const [state, transition] = useFSM({
@@ -28,10 +30,18 @@ const SimpleCounter: React.FC = () => {
         initialState: "counting",
     });
     return (
-        <div>
-            {state.context.count}
-            <button onClick={() => transition("increase")}>+</button>
-            <button onClick={() => transition("decrease")}>-</button>
+        <div className="simpleCounter">
+            <label>
+                A simple counter. Use the buttons to increase and decrease its
+                value.
+            </label>
+            <div className="counterContainer">
+                <h2>{state.context.count}</h2>
+                <div className="buttons">
+                    <Button onClick={() => transition("increase")}>+</Button>
+                    <Button onClick={() => transition("decrease")}>-</Button>
+                </div>
+            </div>
         </div>
     );
 };

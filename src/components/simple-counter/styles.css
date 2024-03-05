@@ -1,0 +1,11 @@
+.simpleCounter {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.counterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
