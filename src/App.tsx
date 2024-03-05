@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import StateComponent from "./components/state-component";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    /*
+// Usage
+const fsm = new FSM({
+    states: {
+        off: {
+            onEnter: () => console.log("entered off"),
+        },
+        on: {
+            onEnter: () => console.log("entered on"),
+        },
+    },
+    events: {
+        switch: {
+            off: {
+                target: "on",
+                action: () => console.log("Switching off to on"),
+            },
+            on: {
+                target: "off",
+                action: () => console.log("Switching on to off"),
+            },
+        },
+    },
+    initialContext: { name: "John" },
+    initialState: "on",
+});
+console.log("Starting state:", fsm.getState());
+//console.log(fsm);
+fsm.transition("switch");
+*/
+    //console.log(fsm);
+    return (
+        <div className="App">
+            Hi there
+            <StateComponent />
+        </div>
+    );
 }
 
 export default App;
