@@ -8,7 +8,7 @@ type FSMState<T, C> = {
 };
 
 // Define the return type of the useFSM hook
-type UseFSMReturnType<T, E, C> = [FSMState<T, C>, (eventName: E) => void];
+type UseFSMReturnType<T, E, C> = [FSMState<T, C>, (eventName: E, param?: any) => void];
 
 function useFSM<T extends StateMap<C>, E extends string, C extends object>(
     initFSM: InitFSM<T, string, C>
@@ -27,9 +27,9 @@ function useFSM<T extends StateMap<C>, E extends string, C extends object>(
         context: fsm.current.getContext(),
     });
 
-    const transition = (eventName: E) => {
+    const transition = (eventName: E, param?: any) => {
         if (fsm.current) {
-            fsm.current.transition(eventName);
+            fsm.current.transition(eventName, param);
             setState({
                 currentState: fsm.current.getState(),
                 context: fsm.current.getContext(),

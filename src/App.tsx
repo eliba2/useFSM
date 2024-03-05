@@ -3,6 +3,7 @@ import { MenuItem } from "primereact/menuitem";
 import { Panel } from "primereact/panel";
 import React from "react";
 import "./App.css";
+import Properties from "./components/properties";
 import SimpleCounter from "./components/simple-counter";
 import TrafficLight from "./components/trafficlight";
 
@@ -25,9 +26,9 @@ function App() {
                     command: () => setActiveComponent("TrafficLight"),
                 },
                 {
-                    id: "FetchData",
-                    label: "FetchData",
-                    command: () => setActiveComponent("SimpleCounter"),
+                    id: "Properties",
+                    label: "Properties",
+                    command: () => setActiveComponent("Properties"),
                 },
             ],
         },
@@ -39,8 +40,8 @@ function App() {
                 return <SimpleCounter />;
             case "TrafficLight":
                 return <TrafficLight />;
-            case "FetchData":
-                return <SimpleCounter />;
+            case "Properties":
+                return <Properties />;
             default:
                 return <div></div>;
         }

@@ -1,0 +1,188 @@
+[
+    {
+        "city": "Roy",
+        "address": "Henderson Walk",
+        "rooms": 4,
+        "price": 3861
+    },
+    {
+        "city": "Joes",
+        "address": "Sapphire Street",
+        "rooms": 3,
+        "price": 5460
+    },
+    {
+        "city": "Clarksburg",
+        "address": "Douglass Street",
+        "rooms": 2,
+        "price": 7603
+    },
+    {
+        "city": "Harold",
+        "address": "Lloyd Street",
+        "rooms": 1,
+        "price": 7366
+    },
+    {
+        "city": "Lorraine",
+        "address": "Wortman Avenue",
+        "rooms": 3,
+        "price": 4165
+    },
+    {
+        "city": "Elrama",
+        "address": "Prescott Place",
+        "rooms": 2,
+        "price": 6129
+    },
+    {
+        "city": "Graball",
+        "address": "Waldorf Court",
+        "rooms": 2,
+        "price": 7703
+    },
+    {
+        "city": "Sehili",
+        "address": "Sullivan Place",
+        "rooms": 2,
+        "price": 6613
+    },
+    {
+        "city": "Bascom",
+        "address": "Dupont Street",
+        "rooms": 3,
+        "price": 4058
+    },
+    {
+        "city": "Stagecoach",
+        "address": "Beayer Place",
+        "rooms": 3,
+        "price": 5435
+    },
+    {
+        "city": "Farmers",
+        "address": "Berriman Street",
+        "rooms": 4,
+        "price": 5242
+    },
+    {
+        "city": "Windsor",
+        "address": "Flatlands Avenue",
+        "rooms": 1,
+        "price": 5849
+    },
+    {
+        "city": "Fairview",
+        "address": "Canda Avenue",
+        "rooms": 5,
+        "price": 7316
+    },
+    {
+        "city": "Venice",
+        "address": "Hastings Street",
+        "rooms": 4,
+        "price": 2557
+    },
+    {
+        "city": "Vienna",
+        "address": "Dinsmore Place",
+        "rooms": 5,
+        "price": 7499
+    },
+    {
+        "city": "Bartonsville",
+        "address": "Carlton Avenue",
+        "rooms": 1,
+        "price": 3820
+    },
+    {
+        "city": "Greenbackville",
+        "address": "Decatur Street",
+        "rooms": 6,
+        "price": 5580
+    },
+    {
+        "city": "Hollymead",
+        "address": "Seigel Court",
+        "rooms": 6,
+        "price": 7329
+    },
+    {
+        "city": "Hegins",
+        "address": "Judge Street",
+        "rooms": 1,
+        "price": 7111
+    },
+    {
+        "city": "Alamo",
+        "address": "Noll Street",
+        "rooms": 6,
+        "price": 4250
+    },
+    {
+        "city": "Greenwich",
+        "address": "Porter Avenue",
+        "rooms": 5,
+        "price": 5589
+    },
+    {
+        "city": "Lumberton",
+        "address": "Billings Place",
+        "rooms": 3,
+        "price": 4942
+    },
+    {
+        "city": "Herbster",
+        "address": "Anthony Street",
+        "rooms": 3,
+        "price": 4058
+    },
+    {
+        "city": "Leming",
+        "address": "Seacoast Terrace",
+        "rooms": 4,
+        "price": 6576
+    },
+    {
+        "city": "Edgar",
+        "address": "Nichols Avenue",
+        "rooms": 6,
+        "price": 2451
+    },
+    {
+        "city": "Trucksville",
+        "address": "Chauncey Street",
+        "rooms": 6,
+        "price": 6567
+    },
+    {
+        "city": "Jugtown",
+        "address": "Sunnyside Court",
+        "rooms": 1,
+        "price": 4955
+    },
+    {
+        "city": "Whipholt",
+        "address": "Neptune Avenue",
+        "rooms": 3,
+        "price": 2817
+    },
+    {
+        "city": "Waterloo",
+        "address": "Bassett Avenue",
+        "rooms": 4,
+        "price": 6639
+    },
+    {
+        "city": "Taycheedah",
+        "address": "Catherine Street",
+        "rooms": 3,
+        "price": 6973
+    },
+    {
+        "city": "Rosedale",
+        "address": "Havemeyer Street",
+        "rooms": 1,
+        "price": 5555
+    }
+]

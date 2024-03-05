@@ -13,14 +13,15 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         this.context = props.context || ({} as C);
     }
 
-    transition(eventName: E): void {
+    transition(eventName: E, param?: any): void {
         const stateTransitions = this.transitions[eventName];
 
         if (!stateTransitions) {
             throw new Error(`No transitions defined for event '${eventName}'`);
         }
 
-        const transition = stateTransitions[this.currentState];
+        /* check for transition or fallback trasition */
+        const transition = stateTransitions[this.currentState] || stateTransitions["*"];
 
         if (!transition) {
             throw new Error(`No valid transition found for event '${eventName}' from state '${String(this.currentState)}'`);
@@ -29,7 +30,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         // Execute onExit action for current state
         const onExit = this.states[this.currentState].onExit;
         if (onExit) {
-            const returnValue = onExit(this.context);
+            const returnValue = onExit(this.context, param);
             if (returnValue) {
                 this.context = returnValue as C;
             }
@@ -37,7 +38,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
 
         // Perform the transition action if any and update the context
         if (transition.action) {
-            const returnValue = transition.action(this.context);
+            const returnValue = transition.action(this.context, param);
             if (returnValue) {
                 this.context = returnValue as C;
             }
@@ -49,7 +50,7 @@ class FSM<T extends StateMap<C>, E extends string, C extends object> {
         // Execute onEnter action for the new state
         const onEnter = this.states[this.currentState].onEnter;
         if (onEnter) {
-            const returnValue = onEnter(this.context);
+            const returnValue = onEnter(this.context, param);
             if (returnValue) {
                 this.context = returnValue as C;
             }
