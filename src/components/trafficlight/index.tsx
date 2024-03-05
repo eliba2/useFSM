@@ -33,9 +33,9 @@ const TrafficLight: React.FC = () => {
     const currentLight = state.currentState;
 
     return (
-        <div className="simpleCounter">
+        <div className="trafficLightPage">
             <label>
-                A traffic light. It auto changes between states every second.
+                A traffic light. It changes between states using a timer which transits every second..
             </label>
             <div className="trafficContainer">
                 <div className="traffic-light">

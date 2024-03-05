@@ -6,6 +6,7 @@ import { Properties, Property } from "../../../server/models/types";
 import { Divider } from "primereact/divider";
 import { Message } from "primereact/message";
 import useFSM from "../../hooks/fsm/use-fsm";
+import "./styles.css";
 
 enum FetchUrls {
     Properties = "/properties",
@@ -70,7 +71,6 @@ const PropertiesComponent: React.FC = () => {
     React.useEffect(() => {
         setIgnore(false);
         return () => {
-            console.log("setting ignore");
             setIgnore(true);
         };
     }, []);
@@ -96,11 +96,17 @@ const PropertiesComponent: React.FC = () => {
 
     return (
         <div>
+            <label>
+            An example of fetching data using a state machine. Clicking the buttons transits to 'fetching' state and the fetch call is triggered from within the state machine.
+            </label>
+            <br />
             <Button
+                className="fetchButton"
                 label="Fetch"
                 onClick={() => setFstate("fetch", FetchUrls.Properties)}
             />
             <Button
+                className="fetchButton"
                 label="FetchError"
                 onClick={() => setFstate("fetch", FetchUrls.BadProperties)}
             />

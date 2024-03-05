@@ -1,61 +1,75 @@
+import React from "react";
+import { Divider } from "primereact/divider";
 import { Menu } from "primereact/menu";
 import { MenuItem } from "primereact/menuitem";
 import { Panel } from "primereact/panel";
-import React from "react";
 import "./App.css";
+import Documentation from "./components/documentation";
 import Properties from "./components/properties";
 import SimpleCounter from "./components/simple-counter";
 import TrafficLight from "./components/trafficlight";
 
 function App() {
-    const [activeComponent, setActiveComponent] =
-        React.useState<string>("SimpleCounter");
+    const showComponent = (id: string) => {
+        document.getElementById(id)?.scrollIntoView();
+    };
 
     const menuItems: MenuItem[] = [
+        {
+            label: "Documentation",
+            items: [
+                {
+                    id: "Documentation",
+                    label: "Documentation",
+                    command: () => showComponent("DocumentationComp"),
+                },
+            ],
+        },
         {
             label: "Examples",
             items: [
                 {
                     id: "SimpleCounter",
                     label: "SimpleCounter",
-                    command: () => setActiveComponent("SimpleCounter"),
+                    command: () => showComponent("SimpleCounterComp"),
                 },
                 {
                     id: "TrafficLight",
                     label: "TrafficLight",
-                    command: () => setActiveComponent("TrafficLight"),
+                    command: () => showComponent("TrafficLightComp"),
                 },
                 {
                     id: "Properties",
                     label: "Properties",
-                    command: () => setActiveComponent("Properties"),
+                    command: () => showComponent("PropertiesComp"),
                 },
             ],
         },
     ];
 
-    const renderComponent = (): JSX.Element => {
-        switch (activeComponent) {
-            case "SimpleCounter":
-                return <SimpleCounter />;
-            case "TrafficLight":
-                return <TrafficLight />;
-            case "Properties":
-                return <Properties />;
-            default:
-                return <div></div>;
-        }
-    };
-
     return (
         <div className="App">
-            <Panel header="Header" className="topPanel">
+            <Panel header="useFSM" className="topPanel">
                 <div className="flex">
                     <div className="w-1/4">
                         <Menu model={menuItems} />
                     </div>
                     <div className="w-3/4">
-                        <> {renderComponent()}</>
+                        <div id="DocumentationComp">
+                            <Documentation />
+                        </div>
+                        <h1>Examples</h1>
+                        <div id="TrafficLightComp">
+                            <TrafficLight />
+                        </div>
+                        <Divider />
+                        <div id="SimpleCounterComp">
+                            <SimpleCounter />
+                        </div>
+                        <Divider />
+                        <div id="PropertiesComp">
+                            <Properties />
+                        </div>
                     </div>
                 </div>
             </Panel>

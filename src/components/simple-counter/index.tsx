@@ -13,7 +13,7 @@ const SimpleCounter: React.FC = () => {
                 counting: {
                     target: "counting",
                     action: (context) => {
-                        return { ...context, count: context!.count + 1 };
+                        return { ...context, count: context && context.count + 1 };
                     },
                 },
             },
@@ -21,7 +21,7 @@ const SimpleCounter: React.FC = () => {
                 counting: {
                     target: "counting",
                     action: (context) => {
-                        return { ...context, count: context!.count - 1 };
+                        return { ...context, count: context && context.count - 1 };
                     },
                 },
             },
@@ -33,10 +33,10 @@ const SimpleCounter: React.FC = () => {
         <div className="simpleCounter">
             <label>
                 A simple counter. Use the buttons to increase and decrease its
-                value.
+                value. In this case the value is managed in the state machine's context.
             </label>
             <div className="counterContainer">
-                <h2>{state.context.count}</h2>
+                <h1>{state.context.count}</h1>
                 <div className="buttons">
                     <Button onClick={() => transition("increase")}>+</Button>
                     <Button onClick={() => transition("decrease")}>-</Button>

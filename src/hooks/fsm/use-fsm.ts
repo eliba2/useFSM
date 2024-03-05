@@ -13,8 +13,7 @@ type UseFSMReturnType<T, E, C> = [FSMState<T, C>, (eventName: E, param?: any) =>
 function useFSM<T extends StateMap<C>, E extends string, C extends object>(
     initFSM: InitFSM<T, string, C>
 ): UseFSMReturnType<T, E, C> {
-    // Explicitly specify the type of the ref object; otherwise ts might
-    // complain its read-only
+    // Explicitly specify the type of the ref object
     const fsm = React.useRef<FSM<T, string, C> | null>(null);
 
     // Initialize the FSM instance if it's not already created
