@@ -4,7 +4,7 @@
 
 ## Quick Start
 
-Use **npm start** to start the demo app. The app contains a client and a server components demostrating the usage of the effect.
+Use **npm start** to start the demo app and go to [http://localhost:3000](http://localhost:3000). The app contains a client and a server components demostrating the usage of the effect.
 The *useEffect* hook is available at **/src/hooks/fsm**. A typical usage is
 
 ```javascript
