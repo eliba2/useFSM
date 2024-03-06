@@ -2,19 +2,36 @@
 
 [Finite State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) as a custom React hook.
 
-## Installation
+## Quick Start
 
-As for this demo project, import the `useFSM` hook and related types from the `hooks` folder.
+Use **npm start** to start the demo app. The app contains a client and a server components demostrating the usage of the effect.
+The *useEffect* hook is available at **/src/hooks/fsm**. A typical usage is
+
+```javascript
+    import { useFSM } from "use-fsm";
+    const [state, dispatch] = useFSM({
+        states: {
+            ...
+        },
+        events: {
+            ...
+        },
+        context: {
+            ...
+        }
+        initialState: "..."
+    });
+```
 
 ## Usage
 
 ### Setup
 
-The *useFSM* hook receives a configuration object as its first argument which contains *states*, *transitions*, *context* and an *initial state*. It describes the state of the application.
+The *useFSM* hook receives a configuration object as its first argument which contains **states**, **events** *(=transitions)*, **context** and an **initial state**. The configuration object fully describes the state of the application.
 
 **States**
 
-These are the states of the FSM. They represent the possible states of the application.
+All the possible states of the application. States are defined as an object with the keys representing the state name and the value if an object which optionally contains **lifecycle methods**, *onEnter* and *onExit*.
 ```javascript
     states: {
         one: {
@@ -29,7 +46,7 @@ These are the states of the FSM. They represent the possible states of the appli
 
 **Events**
 
-These are the transitions that the FSM can make. They represent the possible transitions between states. They are defines as an object with the keys representing the source event name and the values representing the target state.
+Events represent the possible transitions between states. They are defined as an object with the keys representing the event name and the values are an object with a key representing the *source* state and the value is an object represnting the *target* state and a possible **action** method.
 
 ```javascript
     events: {
@@ -61,7 +78,7 @@ Note that an attempt to transit to an unknown state will throw an error.
 
 **Context**
 
-Context is used for extended state, enabling to store and access a state in the state machine itself.
+Context is used for extended state, enabling to store and access an additional state in the state machine itself.
 
 ```javascript
     context: {
@@ -70,7 +87,7 @@ Context is used for extended state, enabling to store and access a state in the 
     }
 ```
 
-The context is available in both the onExit/onEnter/action methods where it is passed as the first argument. You might mutate it either by *returning a new* object or by *altering the existing object* itself.
+The context is available in both the **onExit**/**onEnter**/**action** methods where it is passed as the first argument. You might mutate it either by *returning a new* object or by *altering the existing object* itself.
 
 
 **Initial State**
@@ -83,7 +100,7 @@ As the name suggests, it is the initial state of the FSM.
 
 **Return Values**
 
-The *useFSM* hook returns an array with (1) an object containing the current state and context (2) a function that can be used to transition to a new state.
+The *useFSM* hook returns an array with (1) an object containing the **current state** and **context** (2) a function that can be used to **transition** to a new state.
 
 ```javascript
     const [state, transition] = useFSM({
