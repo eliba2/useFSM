@@ -8,7 +8,10 @@ type FSMState<T, C> = {
 };
 
 // Define the return type of the useFSM hook
-type UseFSMReturnType<T, E, C> = [FSMState<T, C>, (eventName: E, param?: any) => void];
+type UseFSMReturnType<T, E, C> = [
+    FSMState<T, C>,
+    (eventName: E, param?: any) => void
+];
 
 function useFSM<T extends StateMap<C>, E extends string, C extends object>(
     initFSM: InitFSM<T, string, C>
@@ -28,11 +31,22 @@ function useFSM<T extends StateMap<C>, E extends string, C extends object>(
 
     const transition = (eventName: E, param?: any) => {
         if (fsm.current) {
+            const previousState = fsm.current.getState();
+            const previousContext = fsm.current.getContext();
+
             fsm.current.transition(eventName, param);
-            setState({
-                currentState: fsm.current.getState(),
-                context: fsm.current.getContext(),
-            });
+
+            const newState = fsm.current.getState();
+            const newContext = fsm.current.getContext();
+
+            // Check if state or context has changed
+            if (newState !== previousState || newContext !== previousContext) {
+                // If there's no change, do not call setState, hence no re-render
+                setState({
+                    currentState: newState,
+                    context: newContext,
+                });
+            }
         }
     };
 
